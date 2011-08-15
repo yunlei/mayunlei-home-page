@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<!-- TODO need set to false in production -->
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.objectFactory"
+		value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+	<constant name="struts.custom.i18n.resources" value="globalMessages"></constant>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	
+	<!-- allow OGNL to access static method -->
+	<constant name="Struts.ognl.allowStaticMethodAccess" value="true"></constant>
+ 
+	 
+
+	<package name="home" namespace="/" extends="struts-default">
+		<action name="changeLang" class="action.changeLangAction">
+		</action>
+		<action name="init" class="action.initAction">
+		</action>
+		 
+	</package>
+</struts>

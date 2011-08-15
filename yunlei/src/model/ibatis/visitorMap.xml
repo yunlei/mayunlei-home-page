@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+		<typeAlias alias="visitorInfo" type="model.visitorInfo" />
+		<resultMap id="VisitorMap" class="visitorInfo">
+			<result property="ip" column="IP" nullValue="127.0.0.2"/>
+			<result property="date" column="VISITE_DATE" nullValue=""/>
+		</resultMap>
+		<select id="Visitor.selectAll"  parameterClass="visitorInfo" resultMap="VisitorMap">
+	    	<![CDATA[    
+	    	select *
+	    	from  visitorInfo 
+	    	]]>
+		</select>
+		<insert id="Visitor.insertIp" parameterClass="String">
+			<![CDATA[
+			insert into visitorInfo (IP) values(#value#)
+			]]>
+		</insert>
+</sqlMap>
