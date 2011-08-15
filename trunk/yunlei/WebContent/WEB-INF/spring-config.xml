@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-lazy-init="false" default-autowire="byName">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="url" value="jdbc:mysql://localhost:3306/db"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="7085833" /> 
+				<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		 
+	</bean>
+	<bean id="sqlMapClientChat" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="configLocation">
+			<value>/WEB-INF/sqlMap.xml</value>
+		</property>
+		<property name="lobHandler" ref="lobHandler">
+		</property>
+	</bean>
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" />
+	<bean id="initAction" class="action.initAction">
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+	</bean>
+	<bean id="userService" class="serviceImpl.UserServiceImpl">
+		<property name="userDAO">
+			<ref bean="userDAO"/>
+		</property>
+	</bean>
+ 
+	<bean id="userDAO" class="DAOImpl.UserDAOImpl">
+		<property name="baseDAO">
+			<ref bean="baseDAO"/>
+		</property>
+	</bean>
+		 
+	<bean id="baseDAO" class="common.BaseDAO">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClientChat" />
+		</property>
+	</bean>
+</beans>
