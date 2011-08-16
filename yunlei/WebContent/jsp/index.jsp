@@ -12,12 +12,14 @@
  	if(session.getAttribute("init")==null)
  	{	
  		String ip=request.getRemoteUser();
+ 		session.setAttribute("init","init");
+ 		session.setAttribute("IP",ip);
 %>
 <script type="text/javascript">
 $(document).ready(function(){
 	 $.ajax({
 		 type:"POST",
-		 url:"init.action?ip="+<%=ip%>		 
+		 url:"init.action?ip="		 
 	 });
 });
 </script>
