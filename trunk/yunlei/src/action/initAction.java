@@ -1,9 +1,11 @@
 package action;
 
+import java.util.Map;
+
 import service.UserService;
 
 import com.opensymphony.xwork2.ActionSupport;
-
+import org.apache.struts2.ServletActionContext;
 public class initAction extends ActionSupport{
 
 	UserService userService;
@@ -28,8 +30,11 @@ public class initAction extends ActionSupport{
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
+		Map  session = ActionContext.getContext().getSession();
+		String ip=(String) session.getAttribute("IP");
+		System.out.print(ip+"\n");
 		userService.putIp(ip);
-		return super.execute();
+		return null;
 	}
 
 }

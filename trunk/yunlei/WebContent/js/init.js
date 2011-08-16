@@ -2,10 +2,7 @@
  
 	  
 	  
-	 $.ajax({
-		 type:"POST",
-		 url:"reportIP.action?ip="+ip;
-	 });
+ 
    
  });
   
