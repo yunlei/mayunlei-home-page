@@ -2,15 +2,18 @@ package DAOImpl;
 
 import common.BaseDAO;
 
-public class UserDAOImpl implements DAO.UserDAO{
+public class UserDAOImpl implements DAO.UserDAO {
 
-	BaseDAO baseDAO; 
+	BaseDAO baseDAO;
+
 	public BaseDAO getBaseDAO() {
 		return baseDAO;
 	}
+
 	public void setBaseDAO(BaseDAO baseDAO) {
 		this.baseDAO = baseDAO;
 	}
+
 	@Override
 	public void putIp(String ip) {
 		// TODO Auto-generated method stub

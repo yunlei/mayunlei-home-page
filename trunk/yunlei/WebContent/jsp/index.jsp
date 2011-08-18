@@ -11,15 +11,15 @@
 <%
  	if(session.getAttribute("init")==null)
  	{	
- 		String ip=request.getRemoteUser();
+ 		 
  		session.setAttribute("init","init");
- 		session.setAttribute("IP",ip);
+ 	 
 %>
 <script type="text/javascript">
 $(document).ready(function(){
 	 $.ajax({
 		 type:"POST",
-		 url:"init.action?ip="		 
+		 url:"init.action?"		 
 	 });
 });
 </script>
@@ -38,6 +38,11 @@ $(document).ready(function(){
 <%
 	}
 %>
+<div style="clear:both;"></div> 
+ 
+ 
+ 
+
 
 </div>
 </body>
