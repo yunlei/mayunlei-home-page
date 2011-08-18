@@ -2,15 +2,20 @@ package action;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+
 import service.UserService;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
-public class initAction extends ActionSupport{
 
+public class initAction extends ActionSupport {
+    
 	UserService userService;
-	String ip;
-	
+	String ip;         
+
 	public UserService getUserService() {
 		return userService;
 	}
@@ -30,9 +35,16 @@ public class initAction extends ActionSupport{
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		Map  session = ActionContext.getContext().getSession();
-		String ip=(String) session.getAttribute("IP");
-		System.out.print(ip+"\n");
+
+		String ip;
+		ActionContext ct = ActionContext.getContext();
+		HttpServletRequest request = (HttpServletRequest) ct
+				.get(ServletActionContext.HTTP_REQUEST);
+		ip = request.getRemoteAddr();
+		
+		System.out.print("init " + ip + "\n");
+		if(ip==null)
+			ip="1.1.1.1";
 		userService.putIp(ip);
 		return null;
 	}
