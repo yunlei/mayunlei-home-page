@@ -27,5 +27,7 @@
 		<action name="init" class="action.initAction">
 			<result name="success"></result>
 		</action>
+		<action name="DBQuery" class="action.DBQueryAction">
+		</action>
 	</package>
 </struts>

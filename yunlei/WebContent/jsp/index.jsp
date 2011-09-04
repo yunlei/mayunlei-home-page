@@ -39,9 +39,13 @@ $(document).ready(function(){
 	}
 %>
 <div style="clear:both;"></div> 
+<div id="menu" >
+	<div><a href='javascript:changePage("cloudDB")'><span><%=cloudDB[langindex]%></span></a></div>
+</div>
  
- 
- 
+<div id="content">
+
+</div>
 
 
 </div>

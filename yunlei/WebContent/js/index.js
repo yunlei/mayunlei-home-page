@@ -17,3 +17,10 @@
 	   	   }
 	   });
  }
+ function changePage(page)
+ {
+	 htmlobj=$.ajax({url:"jsp/"+page+".jsp",async:false});
+	 $("#content").html(htmlobj.responseText);
+
+	 
+ }
